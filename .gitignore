@@ -1,1 +1,6 @@
 adopt-me/node_modules
+adopt-me/.env
+adopt-me/.vscode/
+adopt-me/dist/
+adopt-me/.cache/
+
