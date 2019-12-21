@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 const SearchParams = () => {
-  const location = "Seatle, WA";
+  const [location, setLocation] = useState("Seatle, WA");
+  const [animal, setAnimal] = useState("Dog");
 
   return (
     <div className="search-params">
@@ -13,6 +14,7 @@ const SearchParams = () => {
             value={location}
             type="text"
             placeholder="Location"
+            onChange={e => setLocation(e.target.value)}
           />
         </label>
         <button>Submit</button>
