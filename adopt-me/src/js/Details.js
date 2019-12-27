@@ -3,7 +3,6 @@ import pet from "@frontendmasters/pet";
 
 class Details extends React.Component {
   state = { loading: true };
-
   componentDidMount() {
     pet.animal(this.props.id).then(({ animal }) => {
       this.setState({
@@ -20,7 +19,7 @@ class Details extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return <h1>loading....</h1>;
+      return <h1>Happy Friday.....</h1>;
     }
 
     const { animal, breed, location, media, description, name } = this.state;
