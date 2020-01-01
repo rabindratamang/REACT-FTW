@@ -24,14 +24,22 @@ class Details extends React.Component {
     }, console.error);
   }
 
-  roggleModal = () => this.setState({ showModal: !this.state.showModal });
+  toggleModal = () => this.setState({ showModal: !this.state.showModal });
   adopt = () => navigate(this.state.url);
   render() {
     if (this.state.loading) {
       return <h1>Happy Friday.....</h1>;
     }
 
-    const { animal, breed, location, media, description, name } = this.state;
+    const {
+      animal,
+      breed,
+      location,
+      media,
+      description,
+      name,
+      showModal
+    } = this.state;
 
     return (
       <div className="details">
@@ -41,10 +49,26 @@ class Details extends React.Component {
           <h2>{`${animal}-${breed}-${location}`}</h2>
           <ThemeContext.Consumer>
             {([theme]) => (
-              <button style={{ backgroundColor: theme }}>Adopt Me!</button>
+              <button
+                style={{ backgroundColor: theme }}
+                onClick={this.toggleModal}
+              >
+                Adopt Me!
+              </button>
             )}
           </ThemeContext.Consumer>
           <p>{description}</p>
+          {showModal ? (
+            <Modal>
+              <div>
+                <h1>Would you like to adopt {name}?</h1>
+                <div className="buttons">
+                  <button onClick={this.adopt}>Yes</button>
+                  <button onClick={this.toggleModal}>No, I'm a Monstor.</button>
+                </div>
+              </div>
+            </Modal>
+          ) : null}
         </div>
       </div>
     );
